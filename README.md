@@ -1,5 +1,5 @@
 # MyStore
-Asp.Net MVC web-application with CRUD operations and server-side Pagination.
+Asp.Net MVC web-application using Code-First approach with CRUD operations and server-side Pagination.
 
 *** Content ***
 
