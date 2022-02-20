@@ -1,0 +1,46 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<MyStore.Models.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>Product List</h2>
+
+<style>
+    .table_header {
+        background-color: lightskyblue;
+        color: black;
+    }
+</style>
+
+<table class="table table-bordered table-hover">
+    <thead class="table_header">
+        <tr>
+            <th>ProductId</th>
+            <th>ProductName</th>
+            <th>CategoryId</th>
+            <th>CategoryName</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.ProductName</td>
+                <td>@item.Category.Id</td>
+                <td>@item.Category.CategoryName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="pagedList">
+    @Html.PagedListPager(Model, page => Url.Action("ProductList", new { page }),
+PagedListRenderOptions.ClassicPlusFirstAndLast)
+</div>

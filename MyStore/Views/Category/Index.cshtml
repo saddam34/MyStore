@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MyStore.Models.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Warning !</strong> @TempData["AlertMessage"]
+        <button type="button" class="close" data-dismiss="alert">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+<table class="table table-bordered table-hover">
+    <thead class="table_header">
+        <tr>
+            <th>Id</th>
+            <th>CategoryName</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CategoryName</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btnStyle" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success btnStyle" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btnStyle" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

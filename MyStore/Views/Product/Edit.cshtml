@@ -1,0 +1,38 @@
+﻿@model MyStore.ViewModels.ProductViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<style>
+    .error {
+        color: red;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+
+    @Html.HiddenFor(p => p.Product.Id);
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Product.ProductName)
+        @Html.ValidationMessageFor(m => m.Product.ProductName, "", new { @class = "error" })
+        @Html.TextBoxFor(m => m.Product.ProductName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Product.CategoryId)
+        @Html.ValidationMessageFor(m => m.Product.CategoryId, "", new { @class = "error" })
+        @Html.DropDownListFor(m => m.Product.CategoryId, new SelectList(Model.Categories, "Id", "CategoryName"), "Select Categoy Type", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+} 

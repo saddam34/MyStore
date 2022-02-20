@@ -1,0 +1,17 @@
+﻿@model MyStore.Models.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<ul>
+    <li>@Html.LabelFor(m => m.Id) : @Model.Id</li>
+    <li>@Html.LabelFor(m => m.ProductName) : @Model.ProductName</li>
+    <li>@Html.LabelFor(m => m.Category) : @Model.Category.CategoryName</li>
+</ul>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
