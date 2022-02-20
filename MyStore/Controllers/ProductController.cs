@@ -1,4 +1,4 @@
-﻿using MyStore.Models;
+using MyStore.Models;
 using MyStore.ViewModels;
 using PagedList;
 using System.Data.Entity;
@@ -32,7 +32,7 @@ namespace MyStore.Controllers
             {
                 Categories = category
             };
-            return View("Create", viewModel);
+            return View(viewModel);
         }
 
         [HttpPost]
